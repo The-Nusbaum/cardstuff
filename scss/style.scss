@@ -1,0 +1,136 @@
+@import "../node_modules/bootstrap/scss/bootstrap-reboot.scss";
+
+$primary:       #007bff;
+$secondary:     #6c757d;
+
+
+html {
+  font-size: 12pt;
+}
+.entityCard {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  // outline: solid;
+  // background-color: $primary;
+  list-style: none;
+  columns: 2;
+  column-fill: auto;
+  column-gap: 0.13in;
+  margin: 0;
+  padding: 0;
+  min-height: 50px;
+  & > .bg img{
+    position: absolute;
+    right: 5%;
+    width: 2in;
+    top: 14%;
+    opacity: 0.3;
+    // background-image: url(/img/pic.jpg);
+  }
+  & > .header {
+    // column-span: all;
+    .description {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      font-size: .7rem;
+      font-style: italic;
+      li {
+        display: inline;
+      }
+      .name {
+        display: block;
+        font-size: 1rem;
+        font-weight: bold;
+        font-style: normal;
+      }
+    }
+    .exp {
+      display: inline-block;
+      list-style: none;
+      float:right;
+      .cr {
+        font-size: .9rem;
+      }
+      .value {
+        font-size: .8rem;
+        font-style: italic;
+      }
+    }
+  }
+  & > .attributes {
+    font-size: 0.8rem;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      li {
+        list-style: none;
+        display: inline-block;
+        text-align: center;
+        width: 13%;
+      }
+    }
+  }
+  & > .stats {
+    font-size: 0.8rem;
+    break-inside: avoid;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    dl,dt,dd {
+      display: inline;
+      font-weight: normal;
+    }
+    dd + dd::before, dd + dt::before {
+      content: ", ";
+    }
+  }
+  & > .traits, & > .actions, & > .legendaries {
+    font-size: 0.8rem;
+    dl {
+      margin-bottom: 0.25rem;
+    }
+    dt,dd {
+      display: inline;
+    }
+  }
+  & > * {
+    // background-color: $secondary;
+    margin-top: 5px;
+    &:not(.header) {
+
+    }
+  }
+}
+
+@media print {
+  @page {
+    size:  5in 3in;
+    margin: 0;
+
+    // background-color: $primary
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    // background-color: $primary;
+    // background: brown url(/img/bg.png) top left;
+    background-size: 5in 3in;
+  }
+  .entityCard {
+    page-break-after: always;
+    display: block;
+    width: 5in;
+    height: 6in;
+    padding: 0.125in;
+    // background-color: black;
+  }
+
+}
