@@ -111,8 +111,8 @@ html {
 
 @media print {
   @page {
-    size:  5in 3in;
-    margin: 0;
+    size:  5in 2.8in;
+    margin: 0.125in;
 
     // background-color: $primary
   }
@@ -122,13 +122,13 @@ html {
     font-size: 10px;
     // background-color: $primary;
     // background: brown url(/img/bg.png) top left;
-    background-size: 5in 3in;
+    // background-size: 5in 3in;
   }
   .entityCard {
     page-break-after: always;
     display: block;
     width: 5in;
-    height: 6in;
+    height: 5.25in;
     padding: 0.125in;
     // background-color: black;
   }
