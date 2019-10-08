@@ -1,36 +1,71 @@
-@import "../node_modules/bootstrap/scss/bootstrap-reboot.scss";
+//@import "../node_modules/bootstrap/scss/bootstrap.scss";
+// @import "../fontawesome/scss/fontawesome.scss";
 
 $primary:       #007bff;
 $secondary:     #6c757d;
 
 
 html {
-  font-size: 12pt;
+  // font-size: 12pt;
+}
+
+.list-unstyled {
+  list-style: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  break-after: avoid;
+  margin: 0.3em 0;
+  & + br {
+    break-after: avoid;
+  }
+}
+
+dl {
+  margin: 0.25em 0;
+}
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}
+
+.list-inline {
+  list-style: none;
+  display: inline-block;
+  .list-inline-item {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
 }
 .entityCard {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   display: block;
   position: relative;
-  // outline: solid;
-  // background-color: $primary;
-  list-style: none;
-  columns: 2;
+  column-count: 2;
+  column-gap: normal;
+  column-width: auto;
   column-fill: auto;
-  column-gap: 0.13in;
+  // column-rule-style: dotted;
+  // column-rule-color: black;
+  min-height: 50px;
   margin: 0;
   padding: 0;
-  min-height: 50px;
   & > .bg img{
     position: absolute;
     right: 5%;
     width: 2in;
     top: 14%;
-    opacity: 0.3;
+    opacity: 0.15;
     // background-image: url(/img/pic.jpg);
   }
   & > .header {
     // column-span: all;
+    font-size: 1.3em;
     .description {
       margin: 0;
       padding: 0;
@@ -49,7 +84,7 @@ html {
     }
     .exp {
       display: inline-block;
-      list-style: none;
+      // list-style: none;
       float:right;
       .cr {
         font-size: .9rem;
@@ -63,15 +98,16 @@ html {
   & > .attributes {
     font-size: 0.8rem;
     ul {
-      list-style: none;
+      // list-style: none;
       margin: 0;
       padding: 0;
       text-align: center;
+      width: 100%;
       li {
         list-style: none;
         display: inline-block;
         text-align: center;
-        width: 13%;
+        width: 15%
       }
     }
   }
@@ -100,6 +136,15 @@ html {
       display: inline;
     }
   }
+  .spells {
+    dd + dd::before{
+      content: ", ";
+    }
+    dd + dt::before {
+      display: block;
+    	content: "\A";
+    }
+  }
   & > * {
     // background-color: $secondary;
     margin-top: 5px;
@@ -110,15 +155,21 @@ html {
 }
 
 @media print {
+
+  .noprint {
+    display: none;
+  }
+
   @page {
-    size:  5in 2.8in;
-    margin: 0.125in;
+    size:  5in 3in;
+    margin: 0.125in ;
+    font-size: 12px;
 
     // background-color: $primary
   }
   html, body {
-    margin: 0;
-    padding: 0;
+    // margin: 0;
+    // padding: 0;
     font-size: 10px;
     // background-color: $primary;
     // background: brown url(/img/bg.png) top left;
@@ -127,10 +178,11 @@ html {
   .entityCard {
     page-break-after: always;
     display: block;
-    width: 5in;
-    height: 5.25in;
-    padding: 0.125in;
+    // padding: 0.2in;
     // background-color: black;
+    // & > * {
+    //   page-break-inside: avoid;
+    // }
   }
 
 }
