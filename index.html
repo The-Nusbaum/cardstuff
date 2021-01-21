@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- foo -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,11 +35,8 @@
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.3.1/handlebars.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script src="https://use.fontawesome.com/ea6f6c71ad.js"></script>
 
   <script type="text/javascript">
     Handlebars.registerHelper('getMod', function(val) {
@@ -192,109 +190,27 @@
     });
   </script>
 
-  <script id="entity-template" type="text/x-handlebars-template">
-    <ul class="entityCard container-fluid list-unstyled">
-      <li class="bg"><img src="https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/img/{{source}}/{{name}}.png"</li>
-      <li class="header row">
-        <ul class="description list-unstyled">
-          <li class="name">{{name}}</li>
-          <li class="size">{{doSize size}}</li>
-          <li class="alignment">{{doAlignment alignment}}</li>
-          <li class="type">{{doType type}}</li>
-        </ul>
-        <ul class="exp list-unstyled">
-          <li class="cr">CR: {{cr}}</li>
-          <li class="value">{{doXp cr}}xp</li>
-        </ul>
-      </header>
-      <li class="attributes row">
-        <ul class="list-inline">
-          <li class="list-inline-item"><dt>STR</dt><dd>{{str}}<br>({{getMod str}})</dd></li>
-          <li class="list-inline-item"><dt>DEX</dt><dd>{{dex}}<br>({{getMod dex}})</dd></li>
-          <li class="list-inline-item"><dt>CON</dt><dd>{{con}}<br>({{getMod con}})</dd></li>
-          <li class="list-inline-item"><dt>INT</dt><dd>{{int}}<br>({{getMod int}})</dd></li>
-          <li class="list-inline-item"><dt>WIS</dt><dd>{{wis}}<br>({{getMod wis}})</dd></li>
-          <li class="list-inline-item"><dt>CHA</dt><dd>{{cha}}<br>({{getMod cha}})</dd></li>
-        </ul>
-      </li>
-      <li class="stats row">
-        <ul class="list-unstyled">
-          <li class="ac"><b>AC:</b> {{doAc ac}}</li>
-          <li class="hp"><b>HP:</b> {{hp.average}} ({{hp.formula}})</li>
-          <li class="speed"><b>Speed:</b> {{doSpeed speed}}</li>
-          {{#if skill}}<li class="skills"><b>Skills:</b> <dl>{{#each skill}}<dt>{{@key}}</dt><dd>{{this}}</dd>{{/each}}</dl></li>{{/if}}
-          {{#if save}}<li class="saves"><b>Saves:</b> <dl>{{#each save}}<dt>{{@key}}</dt> <dd>{{this}}</dd>{{/each}}</li>{{/if}}
-          <li class="senses"><b>Senses:</b> <dl>{{#each senses}}<dd>{{this}}</dd>{{/each}}<dt>Passive Perception</dt> <dd>{{passive}}<dd></li>
-          {{#if languagesl}}<li class="languages"><b>Languages:</b> <dl>{{#each languages}}<dd>{{this}}<dd>{{/each}}</dl></li>{{/if}}
-          {{#if resist}}<li class="resistances"><b>Resistant:</b> {{doImmunRes resist}}</li>{{/if}}
-          {{#if immune}}<li class="immunities"><b>Immune:</b> {{doImmunRes immune}}</li>{{/if}}
-          {{#if conditionImmune}}<li class="conImmuntiies"><b>Condition Immunities:</b> <dl>{{#each conditionImmune}}<dd>{{this}}</dd>{{/each}}</dl></li>{{/if}}
-        </ul>
-        <hr>
-      </li>
-      <li class="traits row">
-        {{#each trait}}
-        <dl><dt>{{strip name}}</dt>
-          {{#each entries}}
-            <dd>{{strip this}}</dd>
-          {{/each}}
-        </dl>
-        {{/each}}
-        {{#if spellcasting}}
-          {{#each spellcasting as |sci casting|}}
-            <h5>{{name}}</h5>
-            {{#each headerEntries}}<span>{{strip this}}</span>{{/each}}
-            <dl class="spells">
-            {{#each spells}}
-              <dt>{{@index}} level spells:</dt>
-              {{#each this.spells}}
-              <dd>{{strip this}}</dd>
-              {{/each}}
-            {{/each}}
-          </dl>
-
-          {{/each}}
-        {{/if}}
-      </li>
-      <li class="actions row">
-        <h3>Actions</h3>
-        {{#each action}}
-        <dl><dt>{{strip name}}</dt>
-          {{#each entries}}
-            <dd>{{strip this}}</dd>
-          {{/each}}
-        </dl>
-        {{/each}}
-      </li>
-      {{#if legendary}}
-      <li class="legendaries row">
-        <h3>Legendary Actions</h3>
-          {{#each legendary}}
-          <dl><dt>{{strip name}}</dt>
-            {{#each entries}}
-              <dd>{{strip this}}</dd>
-            {{/each}}
-          </dl>
-          {{/each}}
-      </li>
-      {{/if}}
-      <li class="source row">Source: {{source}} pp{{page}}</li>
-    </ul>
-  </script>
   <script id="entity-row-template" type="text/x-handlebars-template">
-    <tr>
-      <td class="name">{{name}}</td>
-      <td class="cr">{{cr}}</td>
-      <td class="source">{{source}}</td>
-      <td><i class="fas fa-print" data-full='{{full}}'></i></td>
-    </tr>
+
   </script>
   <script type="text/javascript">
-    var entitySource = document.getElementById("entity-template").innerHTML;
-    var entityTemplate = Handlebars.compile(entitySource);
-    var rowSource = document.getElementById("entity-row-template").innerHTML;
-    var rowTemplate = Handlebars.compile(rowSource);
+    var entityTemplate = null;
+    $.get("/templates/monsterTemplate.html",function(resp){
+      entityTemplate = Handlebars.compile(resp);
+    });
 
+    var rowTemplate = null;
+    $.get("/templates/monsterRowTemplate.html",function(resp){
+      rowTemplate = Handlebars.compile(resp);
+      $.get('https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/data/bestiary/index.json',
+        function(resp) {
+          var index = JSON.parse(resp);
+          for(book in index) {
+            storeMonster(book, index[book])
+          }
+        }
+      );
+    });
 
 
     function buildTable(monster) {
@@ -337,14 +253,7 @@
       );
     }
     localStorage.clear();
-    $.get('https://raw.githubusercontent.com/TheGiddyLimit/TheGiddyLimit.github.io/master/data/bestiary/index.json',
-      function(resp) {
-        var index = JSON.parse(resp);
-        for(book in index) {
-          storeMonster(book, index[book])
-        }
-      }
-    );
+
 
     $(document).ready(function(){
       $("#monster-table").on('click',"i.fa-print",function(e){
